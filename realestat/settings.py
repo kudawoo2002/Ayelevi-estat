@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i-%f@&)rdr+7w_-4=-9(ivb3%ynl@ijliutxjbk%16het2h+zb
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['ayelevi-property.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ayelevi-cms1.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
