@@ -1,1 +1,1 @@
-web: gunicorn realestat.wsgi --log-file -
+web: gunicorn realestat.wsgi
