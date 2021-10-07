@@ -1,0 +1,97 @@
+{% extends 'partial/base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="content" class="site-content">
+
+
+<div id="primary" class="content-area grid">
+    <main id="main" class="site-main col-9-12 "  role="main">
+
+  <div id="slider" class="flexslider"><ul class="slides"><li class="single-slider" style=""><img src="{{house.main_pic.url}}"></li><li class="single-slider" style="">
+    <img src="{{house.pic_2.url}}"></li><li class="single-slider" style="">
+      <img src="{{house.pic_3.url}}"></li><li class="single-slider" style="">
+        <img src="{{house.pic_4.url}}"></li><li class="single-slider" style="">
+          <img src="{{house.pic_5.url}}"></li></ul></div><div id="carousel" class="flexslider"><ul class="slides">
+            <li><img width="150" height="150" src="{{house.pic_2.url}}" class="attachment-thumbnail size-thumbnail" alt="" /></li>
+            <li><img width="150" height="150" src="{{house.pic_2.url}}" class="attachment-thumbnail size-thumbnail" alt="" /></li>
+            <li><img width="150" height="150" src="{{house.pic_2.url}}" class="attachment-thumbnail size-thumbnail" alt="" /></li>
+            <li><img width="150" height="150" src="{{house.pic_2.url}}" class="attachment-thumbnail size-thumbnail" alt="" /></li><li><img width="150" height="150" src="{{house.pic_2.url}}" class="attachment-thumbnail size-thumbnail" alt="" /></li></ul></div>							<div class="property-section">
+      <h1 class="entry-title">{{ house.house_name }}</h1><h3 class="price">{{ house.price }}</h3><p>{{ house.description }}</p>
+
+    </div>
+
+          <div class="col-1-1 property-section">
+      <h2 class="entry-title">Property Details</h2>
+      <ul class="pdetails"><li>Year Built: {{ house.year_built }}</li><li>Rooms: {{ house.room }}</li><li>Beds: {{ house.bed }}</li><li>Baths: {{ house.bath }}</li><li>garages: 3</li><li>Lot Area: {{ house.lot_size }}</li><li>Contract: {{ house.contract.contract_type}}</li></ul>			</div>
+
+          <div class="col-1-1 property-section">
+      <h2 class="entry-title">Amenities</h2>
+      <ul class="double"><li>Air Conditioner</li><li>Gym</li><li>Lawn</li><li>Power Backup</li><li>Roof terrace</li><li>Satellite TV</li><li>Sauna</li><li>Swimming Pool</li><li>Washer</li></ul>			</div>
+
+          <div class="col-1-1 property-section">
+    <h2 class="entry-title">Video Tour</h2>
+          </div>
+
+          <div class="col-1-1 property-section">
+    <h2 class="entry-title">Location</h2>
+          <div id="gmaps-canvas">
+      <div class="gmaps-canvas">
+      <div class="marker" data-lat="53.7911014" data-lng="-0.5021911999999702"></div>
+    </div>
+    </div>
+
+
+    </div>
+
+
+
+  </main><!-- #main -->
+        <div id="secondary" class="widget-area col-3-12" role="complementary">
+
+  <div class='agent-widget'><div class="agent-title"><h3 class='entry-title'>{{house.seller.seller_name}}</h3></div><ul class='agent-list'><li class='tel'>{{ house.seller.phone1}}</li><li class='mobile'>{{ house.seller.phone2}}</li><li class='email'>{{ house.seller.email }}</li></ul> </div></aside>
+  <aside id="property_widget-1" class="widget property_widget"><h3 class="widget-title">Latest Properties</h3><ul class="property-widget">
+
+    {% for house in houses %}
+    <li class="cleared">
+
+    <div class="col-4-12">
+    <a href="{% url 'house_detail' house.slug %}" rel="bookmark"><img width="150" height="150" src="{{ house.main_pic.url }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
+
+    <div class="col-8-12 details">
+    <h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/" rel="bookmark">{{ house.house_name }}</a></h4>Rooms: <span>45</span>Beds: <span>4</span>Baths: <span>4</span>                  <span class="price">$2,500pm</span>
+
+    </div>
+    </li>
+
+    {% endfor %}
+
+
+
+
+    </ul><aside id="contract_widget-1" class="widget contract_widget"><h3 class="widget-title">For Sale</h3><ul class="property-widget">
+      {% for house in house_sale %}
+    <li class="cleared">
+
+    <div class="col-4-12">
+    <a href="{http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/}" rel="bookmark"><img width="150" height="150" src="{{ house.main_pic.url }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
+
+    <div class="col-8-12 details">
+    <h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/" rel="bookmark">{{ house.house_name}}</a></h4>Rooms: <span>45</span>Beds: <span>4</span>Baths: <span>4</span>                  <span class="price">$2,500pm</span>
+
+    </div>
+    </li>
+    {% endfor %}
+
+    </ul>		</div>
+
+
+    </div><!-- #primary -->
+</div><!-- /.content -->
+
+
+
+</div><!-- #content -->
+
+
+{% endblock %}

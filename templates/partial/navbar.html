@@ -1,0 +1,35 @@
+{% load static %}
+<header id="masthead" class="site-header" role="banner">
+<div class="grid">
+<div class="site-branding col-4-12">
+
+  <!-- <h1 class="site-title"><a href="{% url 'index' %}" title="Real Estate" rel="home">Real Estate</a></h1></h1> -->
+  <img src="{% static 'images/LOGO.jpg' %}" alt="" >
+          <!-- <p class="site-description">Just another WordPress site</p> -->
+
+</div><!-- .site-branding -->
+<div class="main-nav col-8-12 pull-right">
+
+<div id="cssmenu" class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-358" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-13 current_page_item active"><a href="{% url 'index' %}"><span>Home</span></a></li>
+<li id="menu-item-416" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{% url 'property' %}"><span>Properties</span></a></li>
+<li id="menu-item-361" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has-sub"><a href="#"><span>Location</span></a>
+<ul>
+  {% for location in locations %}
+<li id="menu-item-362" class="menu-item menu-item-type-taxonomy menu-item-object-location"><a href="{% url 'house_by_location' location.slug %}"><span>{{ location.location_name }}</span></a></li>
+  {% endfor %}
+</ul>
+</li>
+<li id="menu-item-366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children has-sub"><a href="#"><span>Contract</span></a>
+<ul>
+  {% for contract in contracts %}
+<li id="menu-item-367" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://realestatev2.thepixeltribe.com/for-sale/"><span>{{ contract.contract_type }}</span></a></li>
+  {% endfor %}
+</ul>
+</li>
+<li id="menu-item-360" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://realestatev2.thepixeltribe.com/get-in-touch-with-us/"><span>Contact</span></a></li>
+</ul></div>
+
+</div>
+</div>
+
+</header><!-- #masthead -->

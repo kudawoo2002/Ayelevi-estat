@@ -1,0 +1,85 @@
+{% extends 'partial/base.html' %}
+
+{% block content %}
+
+<div id="content" class="site-content">
+
+	<div class="header-image">
+		<div class="overlay"></div>
+		<div class="grid">
+		<header class="entry-header">
+
+		<h1> properties </h1>
+	</header><!-- .entry-header -->
+	</div>
+</div>
+<div id="primary" class="content-area grid">
+  <main id="main" class="site-main col-1-1" role="main">
+
+
+
+<article id="post-414" class="post-414 page type-page status-publish hentry">
+
+
+<div class="entry-content">
+
+  <div class='grid'><ul class="properties">
+    {% if houses %}
+    {% for house in houses %}
+  <li class="col-4-12">
+    <div class="property-thumb">
+          <a href="{% url 'house_detail' house.slug %}" >
+      <img width="1200" height="900" src="{{ house.main_pic.url }}" class="attachment-realest_property size-realest_property wp-post-image" alt=""
+      srcset="{{ house.main_pic.url }} 1200w,
+      {{ house.pic_2.url }} 300w,
+      {{ house.pic_3.url }} 768w,
+      {{ house.pic_4.url }} 1024w,
+      {{ house.pic_5.url }} 400w,
+      http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-800x600.jpg 800w" sizes="(max-width: 1200px) 100vw, 1200px" />      </a>
+                            <span class="price">${{ house.price }}</span>
+
+                      <span class="featured">Featured</span>
+            </div>
+
+    <ul class="property-info">
+    <h3 class="entry-title"><a href="{% url 'house_detail' house.slug %}" rel="bookmark">{{ house.house_name }}</a></h3>      <span class="location-marker">
+      <i class="fa fa-map-marker"></i>{{ house.address }}      </span>
+                                    <li><i class="fa fa-bed"></i><span>Beds</span><span class="alignright">{{ house.bed }}</span></li>
+
+                              <li><i class="fa fa-shower"></i><span>Baths</span><span class="alignright">{{ house.bath }}</span></li>
+
+                              <li><i class="fa fa-th-large"></i><span>Rooms</span><span class="alignright">{{ house.room }}</span></li>
+
+        </ul>
+  </li>
+  {% endfor %}
+{% else%}
+  <li class="col-4-12 text-center">
+    <h2>No Property found, visit later</h2>
+  </li>
+{% endif %}
+
+
+
+
+
+
+
+
+
+</ul><div class="col-1-1"></div></div></div>
+    </div><!-- .entry-content -->
+
+<footer class="entry-footer">
+    </footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+
+
+
+  </main><!-- #main -->
+</div><!-- #primary -->
+
+
+</div><!-- #content -->
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'partial/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% for house in houses %}
+  <h2>{{ house }}</h2>
+{% endfor %}
+{% endblock %}
