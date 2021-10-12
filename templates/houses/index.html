@@ -13,10 +13,10 @@
 {% for house in houses %}
 <li class="instance cleared">
     <div class="slider-image ig-mayfair">
-    <img width="1200" height="550" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-1200x550.jpg" class="attachment-slider size-slider wp-post-image" alt="" />    </div>
+    <img width="1200" height="550" src="{{ house.main_pic.url }}" class="attachment-slider size-slider wp-post-image" alt="" />    </div>
     <div class="grid">
       <div class="slider-info col-5-12 mobile-col-1-1 cleared">
-        <h2 class="widget-title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/">{{ house.house_name }}</a></h2>
+        <h2 class="widget-title"><a href="{% url 'house_detail' house.slug %}">{{ house.house_name }}</a></h2>
           <div class="contract">{{ house.contract.contract_type }}</div>            <span>
             <i class="fa fa-map-marker"></i>{{ house.address }}            </span>
 
