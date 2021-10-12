@@ -10,56 +10,28 @@
 <div class="slider">
 
 <ul class="rslides">
-
+{% for house in houses %}
 <li class="instance cleared">
     <div class="slider-image ig-mayfair">
     <img width="1200" height="550" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-1200x550.jpg" class="attachment-slider size-slider wp-post-image" alt="" />    </div>
     <div class="grid">
       <div class="slider-info col-5-12 mobile-col-1-1 cleared">
-        <h2 class="widget-title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/">Abbey Manor</a></h2>
-          <div class="contract">For Sale</div>            <span>
-            <i class="fa fa-map-marker"></i>14 Manor Grove            </span>
+        <h2 class="widget-title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/">{{ house.house_name }}</a></h2>
+          <div class="contract">{{ house.contract.contract_type }}</div>            <span>
+            <i class="fa fa-map-marker"></i>{{ house.address }}            </span>
 
                                 <div class="price">
-             $2,500
+             CFA{{ house.price }}
              </div>
-                  <ul class="pdetails cleared"><li>Year Built: <span>2017</span></li><li>Rooms: <span>45</span></li><li>Beds: <span>4</span></li><li>Baths: <span>4</span></li><li>garages: <span>3</span></li><li>Lot Area: <span>34324</li></ul>      </div>
+                  <ul class="pdetails cleared"><li>Year Built: <span>{{ house.year_built }}</span></li><li>Rooms: <span>{{ house.room }}</span></li><li>Beds: <span>{{ house.bed }}</span></li><li>Baths: <span>{{ house.bath }}</span></li><li>garages: <span>{{ house.garage }}</span></li><li>Lot Area: <span>{{ house.lot_size }}</li></ul>      </div>
     </div>
 </li>
+{% endfor %}
 
 
-<li class="instance cleared">
-    <div class="slider-image ig-mayfair">
-    <img width="1252" height="550" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2017/08/residence-2238987_1920-e1502999915284-1252x550.jpg" class="attachment-slider size-slider wp-post-image" alt="" />    </div>
-    <div class="grid">
-      <div class="slider-info col-5-12 mobile-col-1-1 cleared">
-        <h2 class="widget-title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3/">Exeter Drive</a></h2>
-          <div class="contract">For Sale</div>            <span>
-            <i class="fa fa-map-marker"></i>43 Manor Close            </span>
-
-                                <div class="price">
-             $150000
-             </div>
-                  <ul class="pdetails cleared"><li>Year Built: <span>2017</span></li><li>Rooms: <span>12</span></li><li>Beds: <span>5</span></li><li>Baths: <span>6</span></li><li>garages: <span>2</span></li><li>Lot Area: <span>25000</li></ul>      </div>
-    </div>
-</li>
 
 
-<li class="instance cleared">
-    <div class="slider-image ig-mayfair">
-    <img width="1440" height="550" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2017/08/residence-2219972_1920-1440x550.jpg" class="attachment-slider size-slider wp-post-image" alt="" />    </div>
-    <div class="grid">
-      <div class="slider-info col-5-12 mobile-col-1-1 cleared">
-        <h2 class="widget-title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-2/">Birmingham close</a></h2>
-          <div class="contract">Rent</div>            <span>
-            <i class="fa fa-map-marker"></i>32 New Village            </span>
 
-                                <div class="price">
-             $5,000.00
-             </div>
-                  <ul class="pdetails cleared"><li>Year Built: <span>2007</span></li><li>Rooms: <span>6</span></li><li>Beds: <span>2</span></li><li>Baths: <span>3</span></li><li>Lot Area: <span>12000</li></ul>      </div>
-    </div>
-</li>
 
     </ul>
   <div class="navcontrols"></div>

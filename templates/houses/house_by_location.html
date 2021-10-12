@@ -4,7 +4,90 @@
 
 {% block content %}
 
-{% for house in houses %}
-  <h2>{{ house }}</h2>
+<div id="content" class="site-content">
+
+
+
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+<div class="sproperty">
+<div class="grid">
+
+<form role="search" method="get" class="searchform group property-search" action="http://realestatev2.thepixeltribe.com/">
+
+<input type="hidden" name="search" value="property">
+
+<div class="col-3-12">
+<select  name='location' id='location' class='postform' >
+	<option value='0' selected='selected'>All Locations</option>
+	<option class="level-0" value="5">Cottingham&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="11">Leicester&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="13">London&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="14">Nottingham&nbsp;&nbsp;(1)</option>
+</select>
+</div>
+<div class="col-3-12">
+<select  name='type' id='type' class='postform' >
+	<option value='0' selected='selected'>All Property Types</option>
+	<option class="level-0" value="4">Apartment</option>
+	<option class="level-0" value="7">House</option>
+</select>
+</div>
+<div class="col-3-12">
+
+    <select name="listing_type" id="listing_type">
+
+        <option  value="">Contract Type</option>
+
+        <option  value="rental">Rent</option>
+
+        <option  value="sale">Sale</option>
+
+        <option  value="sold">Sold</option>
+    </select>
+
+</div>
+<div class="col-3-12">
+ <input type="hidden" name="post_type" value="property" />
+ <input type="submit" id="searchsubmit" value="Search" />
+ </div>
+</form>
+
+</div>
+</div>
+<div class='section props'><div class='grid'><h2 class='section-title'>Featured Properties</h2><ul class="properties">
+  {% for house in houses %}
+    <li class="col-4-12">
+      <div class="property-thumb">
+            <a href="{% url 'house_detail' house.slug %}" >
+        <img width="1200" height="900" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area.jpg" class="attachment-realest_property size-realest_property wp-post-image" alt=""
+        srcset="{{ house.main_pic.url }} 1200w, 
+        http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-300x225.jpg 300w, http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-768x576.jpg 768w, http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-1024x768.jpg 1024w, http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-400x300.jpg 400w, http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-800x600.jpg 800w" sizes="(max-width: 1200px) 100vw, 1200px" />      </a>
+                              <span class="price">CFA{{ house.price }}</span>
+
+                        <span class="featured">Featured</span>
+              </div>
+
+      <ul class="property-info">
+      <h3 class="entry-title"><a href="{% url 'house_detail' house.slug %}" rel="bookmark">{{ house.house_name }}</a></h3>      <span class="location-marker">
+        <i class="fa fa-map-marker"></i>
+        <a href="{% url 'house_detail' house.slug %}" rel="tag">Cottingham</a>      </span>
+                                <li><i class="fa fa-bed"></i><span>Beds</span><span class="alignright">{{ house.bed }}</span></li>
+
+                                <li><i class="fa fa-bath"></i><span>Baths</span><span class="alignright">{{ house.bath }}</span></li>
+
+                                <li><i class="fa fa-th-large"></i><span>Rooms</span><span class="alignright">{{ house.room }}</span></li>
+
+          </ul>
+    </li>
 {% endfor %}
+
+
+  </ul></div></div>		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+	</div><!-- #content -->
 {% endblock %}
