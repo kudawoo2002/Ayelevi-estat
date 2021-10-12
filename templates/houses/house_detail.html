@@ -52,7 +52,15 @@
 		</main><!-- #main -->
      			<div id="secondary" class="widget-area col-3-12" role="complementary">
 
-		<div class='agent-widget'><div class="agent-title"><h3 class='entry-title'>{{ house.seller.seller_name }}</h3></div><ul class='agent-list'><li class='tel'>{{ house.seller.phone1 }}</li><li class='mobile'>{{ house.seller.phone2 }}</li><li class='email'>{{ house.seller.email }}</li></ul> </div></aside><aside id="property_widget-1" class="widget property_widget"><h3 class="widget-title">Latest Properties</h3><ul class="property-widget">
+		<div class='agent-widget'><div class="agent-title"><h3 class='entry-title'>{{ house.seller.seller_name }}</h3></div>
+    {% if house.phone1 and house.phone2 %}
+      <ul class='agent-list'><li class='tel'>{{ house.seller.phone1 }}</li>
+      <li class='mobile'>{{ house.seller.phone2 }}</li><li class='email'>{{ house.seller.email }}</li></ul>
+    {% else %}
+      <ul class='agent-list'><li class='tel'>{{ house.seller.phone1 }}</li>
+      <li class='email'>{{ house.seller.email }}</li></ul>
+    {% endif %}
+  </div></aside><aside id="property_widget-1" class="widget property_widget"><h3 class="widget-title">Latest Properties</h3><ul class="property-widget">
     {% for house in houses %}
       <li class="cleared">
 
