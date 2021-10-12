@@ -1,5 +1,6 @@
 {% extends 'partial/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block content %}
 
 	</head>
@@ -19,7 +20,7 @@
       <li><img width="150" height="150" src="{{ house.pic_3.url }}" class="attachment-thumbnail size-thumbnail" alt="" /></li>
       <li><img width="150" height="150" src="{{ house.pic_4.url }}" class="attachment-thumbnail size-thumbnail" alt="" /></li>
       <li><img width="150" height="150" src="{{ house.pic_5.url }}" class="attachment-thumbnail size-thumbnail" alt="" /></li></ul></div>							<div class="property-section">
-				<h1 class="entry-title">{{ house.house_name }}</h1><h3 class="price">CFA{{ house.price }}</h3><p>{{ house.description }}</p>
+				<h1 class="entry-title">{{ house.house_name }}</h1><h3 class="price">CFA{{ house.price | intcomma }}</h3><p>{{ house.description }}</p>
 
 			</div>
 
@@ -52,71 +53,37 @@
      			<div id="secondary" class="widget-area col-3-12" role="complementary">
 
 		<div class='agent-widget'><div class="agent-title"><h3 class='entry-title'>{{ house.seller.seller_name }}</h3></div><ul class='agent-list'><li class='tel'>{{ house.seller.phone1 }}</li><li class='mobile'>{{ house.seller.phone2 }}</li><li class='email'>{{ house.seller.email }}</li></ul> </div></aside><aside id="property_widget-1" class="widget property_widget"><h3 class="widget-title">Latest Properties</h3><ul class="property-widget">
-			<li class="cleared">
+    {% for house in houses %}
+      <li class="cleared">
 
 			<div class="col-4-12">
-			<a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/" rel="bookmark"><img width="150" height="150" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
+			<a href="{% url 'house_detail' house.slug %}" rel="bookmark"><img width="150" height="150" src="{{ house.main_pic.url }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
 
 			<div class="col-8-12 details">
-			<h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/" rel="bookmark">Abbey Manor</a></h4>Rooms: <span>45</span>Beds: <span>4</span>Baths: <span>4</span>                  <span class="price">$2,500pm</span>
+			<h4 class="title"><a href="{% url 'house_detail' house.slug %}" rel="bookmark">{{ house.house_name }}</a></h4>Rooms: <span>{{ house.room }}</span>Beds: <span>{{ house.bed }}</span>Baths: <span>{{ house.bath }}</span>                  <span class="price">CFA{{ house.price | intcomma }}</span>
 
 			</div>
 			</li>
+    {% endfor %}
 
-			<li class="cleared">
 
-			<div class="col-4-12">
-			<a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3/" rel="bookmark"><img width="150" height="150" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2017/08/residence-2238987_1920-e1502999915284-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
 
-			<div class="col-8-12 details">
-			<h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3/" rel="bookmark">Exeter Drive</a></h4>Rooms: <span>12</span>Beds: <span>5</span>Baths: <span>6</span>                  <span class="price">$150000</span>
 
-			</div>
-			</li>
 
-			<li class="cleared">
-
-			<div class="col-4-12">
-			<a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-2/" rel="bookmark"><img width="150" height="150" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2017/08/residence-2219972_1920-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
-
-			<div class="col-8-12 details">
-			<h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-2/" rel="bookmark">Birmingham close</a></h4>Rooms: <span>6</span>Beds: <span>2</span>Baths: <span>3</span>                  <span class="price">$5,000.00</span>
-
-			</div>
-			</li>
-
-			<li class="cleared">
-
-			<div class="col-4-12">
-			<a href="http://realestatev2.thepixeltribe.com/property/villa-grand-rosa-2-2/" rel="bookmark"><img width="150" height="150" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2017/08/59155-island-dr-plaquemine-la-70764-0-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
-
-			<div class="col-8-12 details">
-			<h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/villa-grand-rosa-2-2/" rel="bookmark">Villa Grand Rosa</a></h4>Rooms: <span>5</span>Beds: <span>1</span>Baths: <span>2</span>                  <span class="price">$3,200.00</span>
-
-			</div>
-			</li>
 			</ul><aside id="contract_widget-1" class="widget contract_widget"><h3 class="widget-title">For Sale</h3><ul class="property-widget">
+        {% for sale in house_sale %}
 			<li class="cleared">
 
 			<div class="col-4-12">
-			<a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/" rel="bookmark"><img width="150" height="150" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2015/10/the-park-crescent-by-amazon-property-kitchen-and-living-area-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
+			<a href="{% url 'house_detail' sale.slug %}" rel="bookmark"><img width="150" height="150" src="{{ sale.main_pic.url }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
 
 			<div class="col-8-12 details">
-			<h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3-2/" rel="bookmark">Abbey Manor</a></h4>Rooms: <span>45</span>Beds: <span>4</span>Baths: <span>4</span>                  <span class="price">$2,500pm</span>
+			<h4 class="title"><a href="{% url 'house_detail' sale.slug %}" rel="bookmark">{{ sale.house_name }}</a></h4>Rooms: <span>{{ sale.room }}</span>Beds: <span>{{ sale.bed }}</span>Baths: <span>{{ sale.bath }}</span>                  <span class="price">CFA{{ sale.price | intcomma }}</span>
 
 			</div>
 			</li>
+      {% endfor %}
 
-			<li class="cleared">
-
-			<div class="col-4-12">
-			<a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3/" rel="bookmark"><img width="150" height="150" src="http://realestatev2.thepixeltribe.com/wp-content/uploads/2017/08/residence-2238987_1920-e1502999915284-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a> </div>
-
-			<div class="col-8-12 details">
-			<h4 class="title"><a href="http://realestatev2.thepixeltribe.com/property/uptown-duplex-3/" rel="bookmark">Exeter Drive</a></h4>Rooms: <span>12</span>Beds: <span>5</span>Baths: <span>6</span>                  <span class="price">$150000</span>
-
-			</div>
-			</li>
 			</ul>		</div>
 
 
